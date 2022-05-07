@@ -108,6 +108,7 @@ guat_filt_21<-guat_filt_21%>%
   # Aqui manipulo la variable etnididad para que tenga un 0 si no son poblaciones indigenas y un 1 si si son
   # En la documentacion puedo observar que 3 y 4 son etiquetas para mestizos y extranjeros, mientras que el resto son etnias
          ETNI = ifelse(ETNI  %in% c(3,4) | is.na(ETNI) ,0,1),
+  # Aqui agrego los cortes para crear las categorias con la funcion cut. Hay que notar que la logica de cada cut es a< x <=b por lo que contienen la cota superior pero no la inferior.
          EDAD_FACTOR = cut(EDAD, breaks = c(-Inf,13,24,44,64,Inf), labels = c("Under 14","14 to 24","25 to 44","45 to 64","65 and over")),
          NIVEL_FACTOR= cut(NIVEL, breaks = c(-Inf,2,3,4,5,Inf), labels = c("Primary(and less)","Junior High","Highschool","BS","Graduate")))
 
